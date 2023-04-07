@@ -46,8 +46,3 @@ var CompteBancaire = /** @class */ (function () {
 }());
 var liamBank = new CompteBancaire("Liam", "Cariou", 1111);
 var bogdanBank = new CompteBancaire("Bogdan", "Monote", 2222);
-console.log("Le solde du compte de ".concat(liamBank.nom, " ").concat(liamBank.prenom, " est de ").concat(liamBank.solde, " \u20AC."));
-liamBank.deposer(100);
-console.log(" Solde apr\u00E8s depot ".concat(liamBank.solde));
-liamBank.retirer(1);
-console.log("Solde apr\u00E8s retrait ".concat(liamBank.solde));

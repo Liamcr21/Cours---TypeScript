@@ -43,10 +43,3 @@ class CompteBancaire {
 
   const liamBank = new CompteBancaire("Liam", "Cariou", 1111);
   const bogdanBank = new CompteBancaire("Bogdan" , "Monote", 2222);
-  console.log(`Le solde du compte de ${liamBank.nom} ${liamBank.prenom} est de ${liamBank.solde} €.`);
-
-    liamBank.deposer(100)
-  console.log(` Solde après depot ${liamBank.solde}` );
-
-  liamBank.retirer(1)
-  console.log(`Solde après retrait ${liamBank.solde}` );

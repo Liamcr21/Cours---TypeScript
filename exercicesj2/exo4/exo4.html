@@ -20,11 +20,18 @@
 
     <div id="accName"></div>
     <div id="accSolde"></div>
+    <div id="accMessage"></div>
 
     <form hidden action="" id="formdepot">
         <label for="">Dépot</label>
         <input type="text" id="inputdepot">
         <button type="button" id="btndepot">Faire le dépot</button>
+    </form>
+
+    <form hidden action="" id="formretrait">
+        <label for="">Retrait</label>
+        <input type="text" id="inputretrait">
+        <button type="button" id="btnretrait">Faire le retrait</button>
     </form>
 
 
@@ -36,11 +43,19 @@
 
         let accName = document.getElementById("accName");
         let accSolde = document.getElementById("accSolde");
+        let accMessage = document.getElementById("accMessage");
+
 
         let formdepot = document.getElementById("formdepot");
         let inputdepot = document.getElementById("inputdepot");
         let btndepot = document.getElementById("btndepot");
-        
+
+        let formretrait = document.getElementById("formretrait");
+        let inputretrait = document.getElementById("inputretrait");
+        let btnretrait = document.getElementById("btnretrait");
+
+
+        // connexion
         btnco.addEventListener("click", function (event) {
             if (inputco.value == "") {
                 event.preventDefault();
@@ -49,16 +64,77 @@
                 formco.setAttribute('hidden', 'true');
                 accName.innerHTML = bogdanBank.nom + " " + bogdanBank.prenom;
                 accSolde.innerHTML = bogdanBank.solde + ' €'
+                //depot
                 formdepot.removeAttribute('hidden');
+                btndepot.addEventListener("click", function (event) {
+                    if (inputdepot.value == "") {
+                        event.preventDefault();
+                        alert("rentrer une valeur")
+                    }
+                    else{
+                          montantDepot = inputdepot.value 
+                          bogdanBank.deposer(parseFloat(montantDepot));
+                        //   console.log(bogdanBank.solde);
+                        accSolde.innerText = bogdanBank.solde + ' €'
+                        accMessage.innerHTML = "Dépot de " + montantDepot + " € effectué"
+                     }
+                })
+                // retrait
+                formretrait.removeAttribute('hidden');
+                btnretrait.addEventListener("click", function (event) {
+                    if (inputretrait.value == "") {
+                        event.preventDefault();
+                        alert("rentrer une valeur")
+                    }
+                    else{
+                          montantRetrait = inputretrait.value 
+                          bogdanBank.retirer(parseFloat(montantRetrait));
+                        //   console.log(bogdanBank.solde);
+                        accSolde.innerText = bogdanBank.solde + ' €'
+                        accMessage.innerHTML = "Retrait de " + montantRetrait + " € effectué"
+                     }
+                })
+
                 
+
+
 
                 // console.log(bogdanBank.nom + " " + bogdanBank.prenom)
             } else if (inputco.value == 1111) {
                 formco.setAttribute('hidden', 'true');
                 accName.innerHTML = liamBank.nom + " " + liamBank.prenom;
-                accSolde.innerHTML = liamBank.solde +  ' €'
-
+                accSolde.innerHTML = liamBank.solde + ' €'
             }
+            //depot
+            formdepot.removeAttribute('hidden');
+                btndepot.addEventListener("click", function (event) {
+                    if (inputdepot.value == "") {
+                        event.preventDefault();
+                        alert("rentrer une valeur")
+                    }
+                    else{
+                          montantDepot = inputdepot.value 
+                          liamBank.deposer(parseFloat(montantDepot));
+                        //   console.log(liamBank.solde);
+                        accSolde.innerText = liamBank.solde + ' €'
+                        accMessage.innerHTML = "Dépot de " + montantDepot + " € effectué"
+                     }
+                })
+                // retrait
+                formretrait.removeAttribute('hidden');
+                btnretrait.addEventListener("click", function (event) {
+                    if (inputretrait.value == "") {
+                        event.preventDefault();
+                        alert("rentrer une valeur")
+                    }
+                    else{
+                          montantRetrait = inputretrait.value 
+                          liamBank.retirer(parseFloat(montantRetrait));
+                        //   console.log(liamBank.solde);
+                        accSolde.innerText = liamBank.solde + ' €'
+                        accMessage.innerHTML = "Retrait de " + montantRetrait + " € effectué"
+                     }
+                })
         })
 
     </script>
