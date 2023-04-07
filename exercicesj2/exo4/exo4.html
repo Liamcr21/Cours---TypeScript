@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <form action="" id="formco">
+        <label for="">Numero de compte</label>
+        <input type="text" id="inputco">
+        <button type="button" id="btnco">Se connecter</button>
+    </form>
+
+    <div id="accName"></div>
+    <div id="accSolde"></div>
+
+    <form hidden action="" id="formdepot">
+        <label for="">Dépot</label>
+        <input type="text" id="inputdepot">
+        <button type="button" id="btndepot">Faire le dépot</button>
+    </form>
+
+
+    <script src="exo4.js"></script>
+    <script>
+        let btnco = document.getElementById("btnco");
+        let inputco = document.getElementById("inputco");
+        let formco = document.getElementById("formco");
+
+        let accName = document.getElementById("accName");
+        let accSolde = document.getElementById("accSolde");
+
+        let formdepot = document.getElementById("formdepot");
+        let inputdepot = document.getElementById("inputdepot");
+        let btndepot = document.getElementById("btndepot");
+        
+        btnco.addEventListener("click", function (event) {
+            if (inputco.value == "") {
+                event.preventDefault();
+                alert("Please enter an account identifier")
+            } else if (inputco.value == 2222) {
+                formco.setAttribute('hidden', 'true');
+                accName.innerHTML = bogdanBank.nom + " " + bogdanBank.prenom;
+                accSolde.innerHTML = bogdanBank.solde + ' €'
+                formdepot.removeAttribute('hidden');
+                
+
+                // console.log(bogdanBank.nom + " " + bogdanBank.prenom)
+            } else if (inputco.value == 1111) {
+                formco.setAttribute('hidden', 'true');
+                accName.innerHTML = liamBank.nom + " " + liamBank.prenom;
+                accSolde.innerHTML = liamBank.solde +  ' €'
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
