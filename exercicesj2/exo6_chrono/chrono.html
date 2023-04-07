@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chronomètre</title>
+</head>
+<body>
+    <div id="timer">00:00:00</div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+    <script src="exo6.js"></script> <!-- Inclure votre fichier Javascript contenant la classe Chronometer -->
+
+    <script>
+        var chronometer = new Chronometer();
+        var timer = document.getElementById("timer");
+        var startBtn = document.getElementById("start");
+        var stopBtn = document.getElementById("stop");
+        var resetBtn = document.getElementById("reset");
+
+        startBtn.addEventListener("click", function() {
+            chronometer.start();
+            updateTimer();
+        });
+
+        stopBtn.addEventListener("click", function() {
+            chronometer.stop();
+        });
+
+        resetBtn.addEventListener("click", function() {
+            chronometer.reset();
+            timer.innerHTML = "00:00:00";
+        });
+
+        function updateTimer() {
+            var elapsedMs = chronometer.getElapsedTime();
+            var hours = Math.floor((elapsedMs / (1000 * 60 * 60)) % 24);
+            var minutes = Math.floor((elapsedMs / (1000 * 60)) % 60);
+            var seconds = Math.floor((elapsedMs / 1000) % 60);
+            var milliseconds = Math.floor(elapsedMs % 1000);
+            var timeStr = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds) + "." + formatMs(milliseconds);
+            timer.innerHTML = timeStr;
+            if (chronometer.isRunning) {
+                setTimeout(updateTimer, 10);
+            }
+        }
+
+        function formatTime(time) {
+            return (time < 10) ? "0" + time : time;
+        }
+
+        function formatMs(ms) {
+            if (ms < 10) {
+                return "00" + ms;
+            } else if (ms < 100) {
+                return "0" + ms;
+            } else {
+                return ms;
+            }
+        }
+    </script>
+
+
+</body>
+</html>
